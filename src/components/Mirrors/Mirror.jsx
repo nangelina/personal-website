@@ -5,8 +5,25 @@ import { Box } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
 import useLayers from '../helpers/use-layers';
+// import { ThinFilmFresnelMap } from '../helpers/ThinFilmFresnelMap';
 
-function Mirror({ sideMaterial, reflectionMaterial, layers, ...props }) {
+// const thinFilmFresnelMap = new ThinFilmFresnelMap();
+
+// function SideMaterial() {
+//   return <meshLambertMaterial map={thinFilmFresnelMap} color="#AAAAAA" />;
+// }
+
+// function ReflectionMaterial({ envMap }) {
+//   return (
+//     <meshLambertMaterial
+//       map={thinFilmFresnelMap}
+//       envMap={envMap}
+//       color="#FFFFFF"
+//     />
+//   );
+// }
+
+function Mirror({ envMap, layers, ...props }) {
   const ref = useLayers(layers);
 
   useFrame(() => {
@@ -17,18 +34,10 @@ function Mirror({ sideMaterial, reflectionMaterial, layers, ...props }) {
   });
 
   return (
-    <Box
-      {...props}
-      ref={ref}
-      material={[
-        sideMaterial,
-        sideMaterial,
-        sideMaterial,
-        sideMaterial,
-        reflectionMaterial,
-        reflectionMaterial,
-      ]}
-    />
+    <Box {...props} ref={ref}>
+      {/* <SideMaterial />
+      <ReflectionMaterial envMap={envMap} /> */}
+    </Box>
   );
 }
 

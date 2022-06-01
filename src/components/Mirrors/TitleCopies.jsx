@@ -8,7 +8,7 @@ import Title from './Title';
 function TitleCopies({ layers }) {
   const vertices = useMemo(() => {
     const y = new IcosahedronGeometry(10);
-    return y.vertices;
+    return y.attributes.position.array;
   }, []);
 
   return (

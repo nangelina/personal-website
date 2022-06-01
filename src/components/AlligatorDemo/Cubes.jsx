@@ -11,9 +11,11 @@ export default () => {
     group.current.rotation.y += 0.005;
   });
 
-  const nodesCubes = map(new Array(50), (el, i) => {
-    return <Cube key={i} />;
-  });
-
-  return <group ref={group}>{nodesCubes}</group>;
+  return (
+    <group ref={group}>
+      {map(new Array(50), (el, i) => {
+        return <Cube key={i} />;
+      })}
+    </group>
+  );
 };

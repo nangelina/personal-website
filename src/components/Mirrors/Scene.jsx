@@ -1,5 +1,5 @@
 import { BackSide } from 'three';
-import { Octahedron } from '@react-three/drei';
+import { Octahedron, Stars } from '@react-three/drei';
 
 import useSlerp from '../helpers/use-slerp';
 import useRenderTarget from '../helpers/use-render-target';
@@ -39,6 +39,7 @@ function MirrorsScene() {
         <TitleCopies layers={[11]} />
         <Mirrors layers={[0, 11]} envMap={renderTarget.texture} />
         <ambientLight intensity={0.25} />
+        <Stars />
       </group>
     </>
   );

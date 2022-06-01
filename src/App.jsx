@@ -1,104 +1,71 @@
-import React, { Suspense } from 'react';
-import PropTypes from 'prop-types';
-import { Canvas } from 'react-three-fiber';
-import { useProgress, Html } from '@react-three/drei';
 import {
-  HashRouter as Router,
-  Switch,
+  BrowserRouter as Router,
+  Routes,
   Route,
   NavLink,
-  Redirect,
 } from 'react-router-dom';
 
-import Scene1 from './components/Scene1';
-import Scene2 from './components/Scene2';
-import Scene3 from './components/Scene3';
+import ThreeContainer from './ThreeContainer';
+import MirrorsScene from './components/Mirrors/Scene';
 
 import './base.css';
+import styles from './App.module.css';
 
-function Loader() {
-  const { progress } = useProgress();
+function Link({ to, children }) {
   return (
-    <Html center>
-      <span style={{ color: '#FFFFFF' }}>{progress} % loaded</span>
-    </Html>
+    <NavLink
+      to={to}
+      className={({ isActive }) => isActive && styles.frameDemo_current}
+    >
+      {children}
+    </NavLink>
   );
 }
 
-function App({ scene = 1 }) {
+export default function App() {
   return (
-    <Canvas concurrent shadowMap camera={{ position: [0, 0, 5], fov: 70 }}>
-      <color attach="background" args={['#000']} />
-      <Suspense fallback={<Loader />}>
-        {scene === 1 && <Scene1 />}
-        {scene === 2 && <Scene2 />}
-        {scene === 3 && <Scene3 />}
-      </Suspense>
-      <ambientLight intensity={0.4} />
-    </Canvas>
-  );
-}
-App.propTypes = {
-  scene: PropTypes.number.isRequired,
-};
-
-export default function Body() {
-  return (
-    <Router>
+    <Router basename="/personal-website">
       <main>
-        <div className="frame">
-          <div className="frame__title-wrap">
-            <h1 className="frame__title">Awesome Mirror Effect</h1>
-            <p className="frame__tagline">A react-three-fiber based demo</p>
+        <div className={styles.frame}>
+          <div className={styles.frameTitleWrap}>
+            <h1 className={styles.frameTitle}>Angelina Nguyen</h1>
+            <p className={styles.frameTagLine}>
+              A @react-three/fiber based demo
+            </p>
           </div>
-          <div className="frame__links">
-            <a href="https://tympanus.net/Development/MenuFullGrid/">
-              Previous demo
-            </a>
-            <a href="https://tympanus.net/codrops/?p=51167">Article</a>
-            <a href="https://github.com/emmelleppi/codrops-r3f-mirrors">
-              GitHub
-            </a>
+          <div className={styles.frameLinks}>
+            <Link to="/projects">Projects</Link>
+            <Link to="/about">About</Link>
+            <Link to="/blog">Blog</Link>
+            <Link to="/contact">Contact</Link>
           </div>
-          <div className="frame__demos">
-            <NavLink
-              to="/panna"
-              activeClassName="frame__demo--current"
-              className="frame__demo"
-            >
-              PANNA
-            </NavLink>
-            <NavLink
-              to="/olga"
-              activeClassName="frame__demo--current"
-              className="frame__demo"
-            >
-              OLGA
-            </NavLink>
-            <NavLink
-              to="/pedro"
-              activeClassName="frame__demo--current"
-              className="frame__demo"
-            >
-              PEDRO
-            </NavLink>
+          <div className={styles.frameDemos}>
+            <Link to="/">HELLO</Link>
+            <Link to="/olga">OLGA</Link>
+            <Link to="/pedro">PEDRO</Link>
           </div>
         </div>
-        <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/panna" />
-            </Route>
-            <Route exact path="/panna">
-              <App scene={1} />
-            </Route>
-            <Route exact path="/olga">
-              <App scene={2} />
-            </Route>
-            <Route exact path="/pedro">
-              <App scene={3} />
-            </Route>
-          </Switch>
+        <div className={styles.content}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ThreeContainer>
+                  <MirrorsScene />
+                </ThreeContainer>
+              }
+            />
+            <Route
+              exact
+              path="/olga"
+              element={<ThreeContainer></ThreeContainer>}
+            />
+            <Route
+              exact
+              path="/pedro"
+              element={<ThreeContainer></ThreeContainer>}
+            />
+          </Routes>
         </div>
       </main>
     </Router>

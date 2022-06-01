@@ -40,7 +40,7 @@ export default function App() {
             <Link to="/contact">Contact</Link>
           </div>
           <div className={styles.frameDemos}>
-            <Link to="/hello">HELLO</Link>
+            <Link to="/">HELLO</Link>
             <Link to="/olga">OLGA</Link>
             <Link to="/pedro">PEDRO</Link>
           </div>
@@ -49,15 +49,6 @@ export default function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                <ThreeContainer>
-                  <MirrorsScene />
-                </ThreeContainer>
-              }
-            />
-            <Route
-              exact
-              path="/hello"
               element={
                 <ThreeContainer>
                   <MirrorsScene />

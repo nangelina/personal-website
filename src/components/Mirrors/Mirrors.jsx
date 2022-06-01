@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import { Texture } from '@types/three';
 
 import { mirrorsData } from '../helpers/data';
@@ -43,9 +43,9 @@ function Mirrors({ envMap, layers, ...props }) {
   );
 }
 
-// Mirrors.propTypes = {
-//   envMap: Texture,
-//   layers: PropTypes.arrayOf(PropTypes.number).isRequired,
-// };
+Mirrors.propTypes = {
+  // envMap: Texture,
+  layers: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
 
 export default Mirrors;

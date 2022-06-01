@@ -1,5 +1,4 @@
-// import PropTypes from 'prop-types';
-// import { Material } from '@types/three';
+import PropTypes from 'prop-types';
 
 import { Box } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
@@ -28,10 +27,10 @@ function Mirror({ SideMaterial, ReflectionMaterial, layers, ...props }) {
   );
 }
 
-// Mirror.propTypes = {
-//   sideMaterial: Material,
-//   reflectionMaterial: Material,
-//   layers: PropTypes.arrayOf(PropTypes.number).isRequired,
-// };
+Mirror.propTypes = {
+  sideMaterial: PropTypes.element,
+  reflectionMaterial: PropTypes.element,
+  layers: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
 
 export default Mirror;

@@ -295,9 +295,9 @@ class ThinFilmFresnelMap extends THREE.DataTexture {
       var g = -0.9689 * x + 1.8758 * y + 0.0415 * z;
       var b = 0.0557 * x - 0.204 * y + 1.057 * z;
 
-      r = THREE.MathUtils.clamp(r, 0.0, 1.0);
-      g = THREE.MathUtils.clamp(g, 0.0, 1.0);
-      b = THREE.MathUtils.clamp(b, 0.0, 1.0);
+      r = THREE.MathUtils.clamp(r, 0.0, 0.25);
+      g = THREE.MathUtils.clamp(g, 0.0, 0.25);
+      b = THREE.MathUtils.clamp(b, 0.0, 0.25);
 
       // linear to gamma
       r = Math.sqrt(r);

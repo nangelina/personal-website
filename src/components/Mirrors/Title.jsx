@@ -23,7 +23,6 @@ function Title({ layers, ...props }) {
     <group {...props} ref={group}>
       <Text
         ref={textRef}
-        name="text-panna"
         depthTest={false}
         material-toneMapped={false}
         material-color="#FFFFFF"

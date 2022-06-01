@@ -29,7 +29,7 @@ export default function App() {
         <div className={styles.frame}>
           <div className={styles.frameTitleWrap}>
             <h1 className={styles.frameTitle}>Angelina Nguyen</h1>
-            <p className={styles.frameTagline}>
+            <p className={styles.frameTagLine}>
               A @react-three/fiber based demo
             </p>
           </div>

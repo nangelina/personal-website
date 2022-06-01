@@ -1,0 +1,100 @@
+.frame {
+    padding: 3rem 5vw;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.frameTitle {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    font-weight: normal;
+}
+
+.frameLinks {
+    display: inline;
+}
+
+.frameLinks a:not(:last-child),
+.frameDemos a:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.frameDemos {
+    margin: 1rem 0;
+}
+
+.frameDemo_current,
+.frameDemo_current:hover {
+    color: var(--color-text);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: calc(100vh - 13rem);
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media screen and (min-width: 53em) {
+    .frame {
+        position: fixed;
+        text-align: left;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        display: grid;
+        align-content: space-between;
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        padding: 3rem;
+        pointer-events: none;
+        grid-template-columns: 75% 25%;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            'title links'
+            '... ...'
+            '... demos';
+    }
+
+    .frameTitleWrap {
+        grid-area: title;
+        display: flex;
+    }
+
+    .frameTitle {
+        margin: 0;
+    }
+
+    .frameTagline {
+        position: relative;
+        margin: 0 0 0 1rem;
+        padding: 0 0 0 1rem;
+        opacity: 0.5;
+    }
+
+    .frameDemos {
+        margin: 0;
+        grid-area: demos;
+        justify-self: end;
+    }
+
+    .frameLinks {
+        grid-area: links;
+        padding: 0;
+        justify-self: end;
+    }
+
+    .frame a {
+        pointer-events: auto;
+    }
+
+    .content {
+        height: 100vh;
+        justify-content: center;
+    }
+}

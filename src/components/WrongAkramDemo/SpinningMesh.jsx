@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 
 import { useFrame } from '@react-three/fiber';
-import { Box, MeshWobbleMaterial } from '@react-three/drei';
+import { MeshWobbleMaterial } from '@react-three/drei';
 
-import { useSpring } from '@react-spring/three';
+import { useSpring, a } from '@react-spring/three';
 
-function SpinningMesh() {
+function SpinningMesh({ position, color, speed, args }) {
   //ref to target the mesh
   const mesh = useRef();
 
@@ -21,9 +21,21 @@ function SpinningMesh() {
   });
 
   return (
-    <Box {...props} ref={mesh} castShadow>
-      <MeshWobbleMaterial {...props} attach="material" factor={0.6} Speed={1} />
-    </Box>
+    <a.mesh
+      position={position}
+      ref={mesh}
+      onClick={() => setExpand(!expand)}
+      scale={props.scale}
+      castShadow
+    >
+      <boxBufferGeometry attach="geometry" args={args} />
+      <MeshWobbleMaterial
+        color={color}
+        speed={speed}
+        attach="material"
+        factor={0.6}
+      />
+    </a.mesh>
   );
 }
 

@@ -4,27 +4,22 @@ import { useCallback } from 'react';
 // import { Texture } from '@types/three';
 
 import { mirrorsData } from '../helpers/data';
-// import { ThinFilmFresnelMap } from '../helpers/ThinFilmFresnelMap';
+import { ThinFilmFresnelMap } from '../helpers/ThinFilmFresnelMap';
 
 import Mirror from './Mirror';
 
-// const thinFilmFresnelMap = new ThinFilmFresnelMap();
+const thinFilmFresnelMap = new ThinFilmFresnelMap();
 
 function Mirrors({ envMap, layers, ...props }) {
   const SideMaterial = useCallback(
-    () => (
-      <meshLambertMaterial
-        // map={thinFilmFresnelMap}
-        color="#AAAAAA"
-      />
-    ),
+    () => <meshLambertMaterial map={thinFilmFresnelMap} color="#AAAAAA" />,
     []
   );
 
   const ReflectionMaterial = useCallback(
     () => (
       <meshLambertMaterial
-        // map={thinFilmFresnelMap}
+        map={thinFilmFresnelMap}
         envMap={envMap}
         color="#FFFFFF"
       />

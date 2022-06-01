@@ -6,6 +6,7 @@ import { useProgress, Html } from '@react-three/drei';
 // import Scene1 from './components/Scene1';
 // import Scene2 from './components/Scene2';
 // import Scene3 from './components/Scene3';
+import Scene1 from './components/Mirrors/Mirror';
 
 function Loader() {
   const { progress } = useProgress();
@@ -18,12 +19,12 @@ function Loader() {
 
 function ThreeBody({ scene = 1 }) {
   return (
-    <Canvas concurrent shadowMap camera={{ position: [0, 0, 5], fov: 70 }}>
+    <Canvas shadows camera={{ position: [0, 0, 5], fov: 70 }}>
       <color attach="background" args={['#000']} />
       <Suspense fallback={<Loader />}>
-        {/* {scene === 1 && <Scene1 />}
-        {scene === 2 && <Scene2 />}
-        {scene === 3 && <Scene3 />} */}
+        {scene === 1 && <Scene1 />}
+        {/* {scene === 2 && <Scene2 />} */}
+        {/* {scene === 3 && <Scene3 />} */}
       </Suspense>
       <ambientLight intensity={0.4} />
     </Canvas>

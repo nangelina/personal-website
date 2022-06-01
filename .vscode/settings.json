@@ -6,6 +6,7 @@
         "glsl",
         "Lenaerts",
         "Matcap",
+        "Mipmaps",
         "Refl",
         "refr",
         "slerp"

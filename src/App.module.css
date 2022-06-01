@@ -24,7 +24,10 @@
     margin: 1rem 0;
 }
 
-.frameDemo_current,
+.frameDemo_current {
+    color: var(--color-link-hover)
+}
+
 .frameDemo_current:hover {
     color: var(--color-text);
 }

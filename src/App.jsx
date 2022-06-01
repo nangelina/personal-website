@@ -5,7 +5,7 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-import Body from './ThreeBG';
+import ThreeBG from './ThreeBG';
 
 import './base.css';
 import styles from './App.module.css';
@@ -22,33 +22,33 @@ export default function App() {
             </p>
           </div>
           <div className={styles.frameLinks}>
-            <a href="https://tympanus.net/Development/MenuFullGrid/">
-              Previous demo
-            </a>
-            <a href="https://tympanus.net/codrops/?p=51167">Article</a>
-            <a href="https://github.com/emmelleppi/codrops-r3f-mirrors">
-              GitHub
-            </a>
+            <a href="/">Projects</a>
+            <a href="/">About</a>
+            <a href="/">Journal</a>
+            <a href="/">Contact</a>
           </div>
           <div className={styles.frameDemos}>
             <NavLink
               to="/panna"
-              activeClassName={styles.frameDemo_current}
-              className={styles.frameDemo}
+              className={({ isActive }) =>
+                isActive ? styles.frameDemo_current : ''
+              }
             >
               PANNA
             </NavLink>
             <NavLink
               to="/olga"
-              activeClassName={styles.frameDemo_current}
-              className={styles.frameDemo}
+              className={({ isActive }) =>
+                isActive ? styles.frameDemo_current : ''
+              }
             >
               OLGA
             </NavLink>
             <NavLink
               to="/pedro"
-              activeClassName={styles.frameDemo_current}
-              className={styles.frameDemo}
+              className={({ isActive }) =>
+                isActive ? styles.frameDemo_current : ''
+              }
             >
               PEDRO
             </NavLink>
@@ -56,10 +56,10 @@ export default function App() {
         </div>
         <div className={styles.content}>
           <Routes>
-            <Route path="/" element={<Body scene={1} />} />
-            <Route exact path="/panna" element={<Body scene={1} />} />
-            <Route exact path="/olga" element={<Body scene={2} />} />
-            <Route exact path="/pedro" element={<Body scene={3} />} />
+            <Route path="/" element={<ThreeBG scene={1} />} />
+            <Route exact path="/panna" element={<ThreeBG scene={1} />} />
+            <Route exact path="/olga" element={<ThreeBG scene={2} />} />
+            <Route exact path="/pedro" element={<ThreeBG scene={3} />} />
           </Routes>
         </div>
       </main>

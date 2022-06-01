@@ -24,7 +24,9 @@ export default function App() {
           <div className={styles.frameLinks}>
             <a href="/">Projects</a>
             <a href="/">About</a>
-            <a href="/">Journal</a>
+            <a href="https://tympanus.net/codrops/2020/09/30/creating-mirrors-in-react-three-fiber-and-three-js/">
+              Journal
+            </a>
             <a href="/">Contact</a>
           </div>
           <div className={styles.frameDemos}>

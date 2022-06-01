@@ -1,16 +1,21 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { IcosahedronGeometry } from 'three';
+import { IcosahedronGeometry, Vector3 } from 'three';
 
 import Title from './Title';
 
-function TitleCopies({ layers }) {
-  const vertices = useMemo(() => {
-    const y = new IcosahedronGeometry(10);
-    return y.attributes.position.array;
-  }, []);
+const vertices = [];
 
+const geometry = new IcosahedronGeometry(10);
+const positionAttribute = geometry.getAttribute('position');
+for (let i = 0; i < positionAttribute.count; i++) {
+  const vertex = new Vector3();
+  vertex.fromBufferAttribute(positionAttribute, i); // read vertex
+  vertices.push(vertex);
+}
+
+function TitleCopies({ layers }) {
   return (
     <group name="titleCopies">
       {vertices.map((vertex, i) => (

@@ -9,7 +9,8 @@ import { useProgress, Html } from '@react-three/drei';
 // import Scene1 from './components/Mirrors/Scene';
 import Scene1 from './components/FiberDemo/Scene';
 import Scene2 from './components/AlligatorDemo/Scene';
-import Scene3 from './components/WrongAkramDemo/Scene';
+// import Scene3 from './components/WrongAkramDemo/Scene';
+import Scene3 from './components/Mirrors/Scene';
 
 function Loader() {
   const { progress } = useProgress();

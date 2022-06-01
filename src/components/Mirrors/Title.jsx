@@ -12,6 +12,7 @@ const TEXT_PROPS = {
 
 function Title({ layers, ...props }) {
   const group = useRef();
+
   useEffect(() => {
     group.current.lookAt(0, 0, 0);
   }, []);
@@ -35,7 +36,7 @@ function Title({ layers, ...props }) {
 }
 
 Title.propTypes = {
-  layers: PropTypes.arrayOf(PropTypes.number).isRequired,
+  layers: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default Title;

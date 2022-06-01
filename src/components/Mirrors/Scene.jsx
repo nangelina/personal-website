@@ -5,10 +5,10 @@ import useSlerp from '../helpers/use-slerp';
 import useRenderTarget from '../helpers/use-render-target';
 
 import Title from './Title';
-import TitleCopies from './TitleCopies';
-import Mirrors from './Mirrors';
+// import TitleCopies from './TitleCopies';
+// import Mirrors from './Mirrors';
 
-function Scene() {
+function MirrorsScene() {
   const [cubeCamera, renderTarget] = useRenderTarget();
   const group = useSlerp();
 
@@ -16,7 +16,8 @@ function Scene() {
 
   return (
     <>
-      <group name="sceneContainer" ref={group}>
+      <Title name="title" position={[0, 0, -10]} />
+      {/* <group name="sceneContainer" ref={group}>
         <Octahedron
           layers={[11]}
           name="background"
@@ -41,9 +42,9 @@ function Scene() {
         <Title name="title" position={[0, 0, -10]} />
         <TitleCopies layers={[11]} />
         <Mirrors layers={[0, 11]} envMap={renderTarget.texture} />
-      </group>
+      </group> */}
     </>
   );
 }
 
-export default Scene;
+export default MirrorsScene;

@@ -1,57 +1,27 @@
-import React, { Suspense } from 'react';
-import PropTypes from 'prop-types';
-import { Canvas } from 'react-three-fiber';
-import { useProgress, Html } from '@react-three/drei';
 import {
-  HashRouter as Router,
-  Switch,
+  BrowserRouter as Router,
+  Routes,
   Route,
   NavLink,
-  Redirect,
 } from 'react-router-dom';
 
-import Scene1 from './components/Scene1';
-import Scene2 from './components/Scene2';
-import Scene3 from './components/Scene3';
+import Body from './ThreeBG';
 
 import './base.css';
+import styles from './App.module.css';
 
-function Loader() {
-  const { progress } = useProgress();
+export default function App() {
   return (
-    <Html center>
-      <span style={{ color: '#FFFFFF' }}>{progress} % loaded</span>
-    </Html>
-  );
-}
-
-function App({ scene = 1 }) {
-  return (
-    <Canvas concurrent shadowMap camera={{ position: [0, 0, 5], fov: 70 }}>
-      <color attach="background" args={['#000']} />
-      <Suspense fallback={<Loader />}>
-        {scene === 1 && <Scene1 />}
-        {scene === 2 && <Scene2 />}
-        {scene === 3 && <Scene3 />}
-      </Suspense>
-      <ambientLight intensity={0.4} />
-    </Canvas>
-  );
-}
-App.propTypes = {
-  scene: PropTypes.number.isRequired,
-};
-
-export default function Body() {
-  return (
-    <Router>
+    <Router basename="/personal-website">
       <main>
-        <div className="frame">
-          <div className="frame__title-wrap">
-            <h1 className="frame__title">Awesome Mirror Effect</h1>
-            <p className="frame__tagline">A react-three-fiber based demo</p>
+        <div className={styles.frame}>
+          <div className={styles.frameTitleWrap}>
+            <h1 className={styles.frameTitle}>Awesome Mirror Effect</h1>
+            <p className={styles.frameTagline}>
+              A react-three-fiber based demo
+            </p>
           </div>
-          <div className="frame__links">
+          <div className={styles.frameLinks}>
             <a href="https://tympanus.net/Development/MenuFullGrid/">
               Previous demo
             </a>
@@ -60,45 +30,37 @@ export default function Body() {
               GitHub
             </a>
           </div>
-          <div className="frame__demos">
+          <div className={styles.frameDemos}>
             <NavLink
               to="/panna"
-              activeClassName="frame__demo--current"
-              className="frame__demo"
+              activeClassName={styles.frameDemo_current}
+              className={styles.frameDemo}
             >
               PANNA
             </NavLink>
             <NavLink
               to="/olga"
-              activeClassName="frame__demo--current"
-              className="frame__demo"
+              activeClassName={styles.frameDemo_current}
+              className={styles.frameDemo}
             >
               OLGA
             </NavLink>
             <NavLink
               to="/pedro"
-              activeClassName="frame__demo--current"
-              className="frame__demo"
+              activeClassName={styles.frameDemo_current}
+              className={styles.frameDemo}
             >
               PEDRO
             </NavLink>
           </div>
         </div>
-        <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/panna" />
-            </Route>
-            <Route exact path="/panna">
-              <App scene={1} />
-            </Route>
-            <Route exact path="/olga">
-              <App scene={2} />
-            </Route>
-            <Route exact path="/pedro">
-              <App scene={3} />
-            </Route>
-          </Switch>
+        <div className={styles.content}>
+          <Routes>
+            <Route path="/" element={<Body scene={1} />} />
+            <Route exact path="/panna" element={<Body scene={1} />} />
+            <Route exact path="/olga" element={<Body scene={2} />} />
+            <Route exact path="/pedro" element={<Body scene={3} />} />
+          </Routes>
         </div>
       </main>
     </Router>

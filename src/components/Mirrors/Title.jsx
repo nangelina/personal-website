@@ -29,7 +29,7 @@ function Title({ layers, ...props }) {
         material-color="#FFFFFF"
         {...TEXT_PROPS}
       >
-        PANNA
+        HELLO
       </Text>
     </group>
   );

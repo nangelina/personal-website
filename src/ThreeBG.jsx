@@ -16,7 +16,7 @@ function Loader() {
   const { progress } = useProgress();
   return (
     <Html center>
-      <span style={{ color: '#FFFFFF' }}>{progress} % loaded</span>
+      <span style={{ color: '#FFFFFF' }}>{progress}% loaded</span>
     </Html>
   );
 }

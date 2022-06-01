@@ -7,12 +7,12 @@ import * as THREE from 'three';
  * the sampled value needs to be multiplied with itself before use. The sampled value should replace
  * the fresnel factor in a PBR material.
  *
- * @property filmThickness The thickness of the thin film layer in nanometers. Defaults to 380.
+ * @property filmThickness The thickness of the thin film layer in nanometres. Defaults to 380.
  * @property refractiveIndexFilm The refractive index of the thin film. Defaults to 2.
  * @property refractiveIndexBase The refractive index of the material under the film. Defaults to 3.
  *
  * @constructor
- * @param filmThickness The thickness of the thin film layer in nanometers. Defaults to 380.
+ * @param filmThickness The thickness of the thin film layer in nanometres. Defaults to 380.
  * @param refractiveIndexFilm The refractive index of the thin film. Defaults to 2.
  * @param refractiveIndexBase The refractive index of the material under the film. Defaults to 3.
  * @param size The width of the texture. Defaults to 64.
@@ -50,7 +50,7 @@ class ThinFilmFresnelMap extends THREE.DataTexture {
 
     this._updateData();
 
-    this.generateMipmaps = true;
+    this.generateMipmap = true;
     this.needsUpdate = true;
   }
 
@@ -92,7 +92,7 @@ class ThinFilmFresnelMap extends THREE.DataTexture {
 
   /**
    * Regenerates the lookup texture given new data.
-   * @param filmThickness The thickness of the thin film layer in nanometers. Defaults to 380.
+   * @param filmThickness The thickness of the thin film layer in nanometres. Defaults to 380.
    * @param refractiveIndexFilm The refractive index of the thin film. Defaults to 2.
    * @param refractiveIndexBase The refractive index of the material under the film. Defaults to 3.
    */
@@ -202,7 +202,7 @@ class ThinFilmFresnelMap extends THREE.DataTexture {
     var waveLenRange = 780 - 380; // the entire visible range
 
     for (var i = 0; i < size; ++i) {
-      var cosThetaI = i / size;
+      var cosThetaI = (i + 15) / size;
       var cosThetaT = Math.sqrt(
         1 - refrRatioSqr * (1.0 - cosThetaI * cosThetaI)
       );
@@ -210,7 +210,7 @@ class ThinFilmFresnelMap extends THREE.DataTexture {
         1 - refrRatioSqrBase * (1.0 - cosThetaT * cosThetaT)
       );
 
-      // this is essentially the extra distance traveled by a ray if it bounds through the film
+      // this is essentially the extra distance travelled by a ray if it bounds through the film
       var pathDiff = 2.0 * refractiveIndexFilm * filmThickness * cosThetaT;
       var pathDiff2PI = 2.0 * Math.PI * pathDiff;
 

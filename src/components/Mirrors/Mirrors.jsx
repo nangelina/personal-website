@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 // import { Texture } from '@types/three';
 
-import { mirrorsData } from '../helpers/data';
-import { ThinFilmFresnelMap } from '../helpers/ThinFilmFresnelMap';
+import { mirrorsData } from './data';
+import ThinFilmFresnelMap from './ThinFilmFresnelMap';
 
 import Mirror from './Mirror';
 

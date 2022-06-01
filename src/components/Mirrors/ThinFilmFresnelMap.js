@@ -21,7 +21,7 @@ import * as THREE from 'three';
  *
  * @author David Lenaerts <http://www.derschmale.com>
  */
-export class ThinFilmFresnelMap extends THREE.DataTexture {
+class ThinFilmFresnelMap extends THREE.DataTexture {
   constructor(
     filmThickness = 380.0,
     refractiveIndexFilm = 2,
@@ -319,3 +319,5 @@ export class ThinFilmFresnelMap extends THREE.DataTexture {
     this.needsUpdate = true;
   }
 }
+
+export default ThinFilmFresnelMap;

@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default () => {
-  const FakeSphere = () => {
-    return (
-      <mesh>
-        <sphereBufferGeometry args={[0.7, 30, 30]} attach="geometry" />
-        <meshBasicMaterial color={0xfff1ef} attach="material" />
-      </mesh>
-    );
-  };
+const FakeSphere = () => {
+  return (
+    <mesh>
+      <sphereBufferGeometry args={[0.7, 30, 30]} attach="geometry" />
+      <meshBasicMaterial color={0xfff1ef} attach="material" />
+    </mesh>
+  );
+};
 
+export default () => {
   return (
     <group>
       <FakeSphere />

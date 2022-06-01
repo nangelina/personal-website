@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { useMatcapTexture, Octahedron } from '@react-three/drei';
+import { BackSide } from 'three';
+import { Octahedron } from '@react-three/drei';
 
 import useSlerp from '../helpers/use-slerp';
 import useRenderTarget from '../helpers/use-render-target';
@@ -12,8 +12,6 @@ function MirrorsScene() {
   const [cubeCamera, renderTarget] = useRenderTarget();
   const group = useSlerp();
 
-  const [matcapTexture] = useMatcapTexture('C8D1DC_575B62_818892_6E747B');
-
   return (
     <>
       <group name="sceneContainer" ref={group}>
@@ -24,8 +22,7 @@ function MirrorsScene() {
           position={[0, 0, -5]}
         >
           <meshMatcapMaterial
-            matcap={matcapTexture}
-            side={THREE.BackSide}
+            side={BackSide}
             transparent
             opacity={0.3}
             color="#FFFFFF"
@@ -41,7 +38,7 @@ function MirrorsScene() {
         <Title name="title" position={[0, 0, -10]} />
         <TitleCopies layers={[11]} />
         <Mirrors layers={[0, 11]} envMap={renderTarget.texture} />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.25} />
       </group>
     </>
   );

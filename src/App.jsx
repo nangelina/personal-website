@@ -5,10 +5,22 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-import ThreeBG from './ThreeBG';
+import ThreeContainer from './ThreeContainer';
+import MirrorsScene from './components/Mirrors/Scene';
 
 import './base.css';
 import styles from './App.module.css';
+
+function Link({ to, children }) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) => isActive && styles.frameDemo_current}
+    >
+      {children}
+    </NavLink>
+  );
+}
 
 export default function App() {
   return (
@@ -16,52 +28,52 @@ export default function App() {
       <main>
         <div className={styles.frame}>
           <div className={styles.frameTitleWrap}>
-            <h1 className={styles.frameTitle}>Awesome Mirror Effect</h1>
+            <h1 className={styles.frameTitle}>Angelina Nguyen</h1>
             <p className={styles.frameTagline}>
-              A react-three-fiber based demo
+              A @react-three/fiber based demo
             </p>
           </div>
           <div className={styles.frameLinks}>
-            <a href="/">Projects</a>
-            <a href="/">About</a>
-            <a href="https://tympanus.net/codrops/2020/09/30/creating-mirrors-in-react-three-fiber-and-three-js/">
-              Journal
-            </a>
-            <a href="/">Contact</a>
+            <Link to="/projects">Projects</Link>
+            <Link to="/about">About</Link>
+            <Link to="/blog">Blog</Link>
+            <Link to="/contact">Contact</Link>
           </div>
           <div className={styles.frameDemos}>
-            <NavLink
-              to="/panna"
-              className={({ isActive }) =>
-                isActive ? styles.frameDemo_current : ''
-              }
-            >
-              PANNA
-            </NavLink>
-            <NavLink
-              to="/olga"
-              className={({ isActive }) =>
-                isActive ? styles.frameDemo_current : ''
-              }
-            >
-              OLGA
-            </NavLink>
-            <NavLink
-              to="/pedro"
-              className={({ isActive }) =>
-                isActive ? styles.frameDemo_current : ''
-              }
-            >
-              PEDRO
-            </NavLink>
+            <Link to="/hello">HELLO</Link>
+            <Link to="/olga">OLGA</Link>
+            <Link to="/pedro">PEDRO</Link>
           </div>
         </div>
         <div className={styles.content}>
           <Routes>
-            <Route path="/" element={<ThreeBG scene={1} />} />
-            <Route exact path="/panna" element={<ThreeBG scene={1} />} />
-            <Route exact path="/olga" element={<ThreeBG scene={2} />} />
-            <Route exact path="/pedro" element={<ThreeBG scene={3} />} />
+            <Route
+              path="/"
+              element={
+                <ThreeContainer>
+                  <MirrorsScene />
+                </ThreeContainer>
+              }
+            />
+            <Route
+              exact
+              path="/hello"
+              element={
+                <ThreeContainer>
+                  <MirrorsScene />
+                </ThreeContainer>
+              }
+            />
+            <Route
+              exact
+              path="/olga"
+              element={<ThreeContainer></ThreeContainer>}
+            />
+            <Route
+              exact
+              path="/pedro"
+              element={<ThreeContainer></ThreeContainer>}
+            />
           </Routes>
         </div>
       </main>

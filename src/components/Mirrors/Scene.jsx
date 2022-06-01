@@ -38,7 +38,7 @@ function MirrorsScene() {
         <Title name="title" position={[0, 0, -10]} />
         <TitleCopies layers={[11]} />
         <Mirrors layers={[0, 11]} envMap={renderTarget.texture} />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.25} />
       </group>
     </>
   );

@@ -1,12 +1,14 @@
 import { BackSide } from 'three';
 import { Octahedron, Stars } from '@react-three/drei';
 
-import useSlerp from '../helpers/use-slerp';
-import useRenderTarget from '../helpers/use-render-target';
+import useSlerp from '../common/use-slerp';
+import useRenderTarget from '../common/use-render-target';
 
 import Title from './Title';
 import TitleCopies from './TitleCopies';
 import Mirrors from './Mirrors';
+
+const text = 'HELLO';
 
 function MirrorsScene() {
   const [cubeCamera, renderTarget] = useRenderTarget();
@@ -35,8 +37,8 @@ function MirrorsScene() {
           args={[0.1, 100, renderTarget]}
           position={[0, 0, 5]}
         />
-        <Title name="title" position={[0, 0, -10]} />
-        <TitleCopies layers={[11]} />
+        <Title name="title" position={[0, 0, -10]} text={text} />
+        <TitleCopies layers={[11]} text={text} />
         <Mirrors layers={[0, 11]} envMap={renderTarget.texture} />
         <ambientLight intensity={0.25} />
         <Stars /* count={5000} */ />

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import { Text } from '@react-three/drei';
 
-import useLayers from '../helpers/use-layers';
+import useLayers from '../common/use-layers';
 
 const TEXT_PROPS = {
   fontSize: 2.5,
   font: 'https://fonts.gstatic.com/s/syncopate/v12/pe0pMIuPIYBCpEV5eFdKvtKqBP5p.woff',
 };
 
-function Title({ layers, ...props }) {
+function Title({ text, layers, ...props }) {
   const group = useRef();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Title({ layers, ...props }) {
         material-color="#FFFFFF"
         {...TEXT_PROPS}
       >
-        HELLO
+        {text}
       </Text>
     </group>
   );

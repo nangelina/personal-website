@@ -14,16 +14,11 @@ for (let i = 0; i < positionAttribute.count; i++) {
   vertices.push(vertex);
 }
 
-function TitleCopies({ layers }) {
+function TitleCopies(props) {
   return (
     <group name="titleCopies">
       {vertices.map((vertex, i) => (
-        <Title
-          key={i}
-          name={'titleCopy-' + i}
-          position={vertex}
-          layers={layers}
-        />
+        <Title key={i} name={'titleCopy-' + i} position={vertex} {...props} />
       ))}
     </group>
   );

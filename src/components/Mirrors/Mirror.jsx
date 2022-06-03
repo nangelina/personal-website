@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
-import useLayers from '../helpers/use-layers';
+import useLayers from '../common/use-layers';
 
 function Mirror({ SideMaterial, ReflectionMaterial, layers, ...props }) {
   const ref = useLayers(layers);

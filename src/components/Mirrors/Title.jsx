@@ -10,7 +10,7 @@ const TEXT_PROPS = {
   font: 'https://fonts.gstatic.com/s/syncopate/v12/pe0pMIuPIYBCpEV5eFdKvtKqBP5p.woff',
 };
 
-function Title({ text, layers, ...props }) {
+function MirrorsTitle({ text, layers, ...props }) {
   const group = useRef();
 
   useEffect(() => {
@@ -34,8 +34,8 @@ function Title({ text, layers, ...props }) {
   );
 }
 
-Title.propTypes = {
+MirrorsTitle.propTypes = {
   layers: PropTypes.arrayOf(PropTypes.number),
 };
 
-export default Title;
+export default MirrorsTitle;

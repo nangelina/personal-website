@@ -14,7 +14,7 @@ for (let i = 0; i < positionAttribute.count; i++) {
   vertices.push(vertex);
 }
 
-function TitleCopies(props) {
+function MirrorsTitleCopies(props) {
   return (
     <group name="titleCopies">
       {vertices.map((vertex, i) => (
@@ -24,8 +24,8 @@ function TitleCopies(props) {
   );
 }
 
-TitleCopies.propTypes = {
+MirrorsTitleCopies.propTypes = {
   layers: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
-export default TitleCopies;
+export default MirrorsTitleCopies;

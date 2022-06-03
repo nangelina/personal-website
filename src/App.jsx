@@ -27,7 +27,7 @@ export default function App() {
     <Router basename="/personal-website">
       <main>
         <div className={styles.frame}>
-          <div className={styles.frameTitleWrap}>
+          {/* <div className={styles.frameTitleWrap}>
             <h1 className={styles.frameTitle}>Angelina Nguyen</h1>
             <p className={styles.frameTagLine}>
               A @react-three/fiber based demo
@@ -38,7 +38,7 @@ export default function App() {
             <Link to="/about">About</Link>
             <Link to="/blog">Blog</Link>
             <Link to="/contact">Contact</Link>
-          </div>
+          </div> */}
           <div className={styles.frameDemos}>
             <Link to="/">HELLO</Link>
             <Link to="/olga">OLGA</Link>
